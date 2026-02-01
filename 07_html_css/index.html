@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Practice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#exercises">Exercises</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Welcome to HTML & CSS Practice</h1>
+        <p>Learn the fundamentals of web development</p>
+    </header>
+
+    <main>
+        <!-- ============================================================= -->
+        <!-- LESSON: Semantic HTML -->
+        <!-- ============================================================= -->
+        <section id="home">
+            <h2>Semantic HTML Elements</h2>
+            <article>
+                <h3>What is Semantic HTML?</h3>
+                <p>Semantic elements clearly describe their meaning to both the browser and developer.</p>
+                <ul>
+                    <li><code>&lt;header&gt;</code> - Page or section header</li>
+                    <li><code>&lt;nav&gt;</code> - Navigation links</li>
+                    <li><code>&lt;main&gt;</code> - Main content</li>
+                    <li><code>&lt;article&gt;</code> - Independent content</li>
+                    <li><code>&lt;section&gt;</code> - Thematic grouping</li>
+                    <li><code>&lt;footer&gt;</code> - Page or section footer</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- EXERCISE 1: Create a Profile Card -->
+        <!-- TODO: Add your profile information -->
+        <!-- ============================================================= -->
+        <section id="about">
+            <h2>Exercise 1: Profile Card</h2>
+            <div class="card">
+                <!-- TODO: Add an image (use placeholder: https://via.placeholder.com/150) -->
+                <!-- TODO: Add your name in an h3 -->
+                <!-- TODO: Add a short bio in a paragraph -->
+                <!-- TODO: Add a list of 3 skills -->
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- LESSON: Forms -->
+        <!-- ============================================================= -->
+        <section id="exercises">
+            <h2>HTML Forms</h2>
+
+            <h3>Example Form</h3>
+            <form class="example-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Your message"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Contact:</label>
+                    <input type="radio" id="contact-email" name="contact" value="email">
+                    <label for="contact-email">Email</label>
+                    <input type="radio" id="contact-phone" name="contact" value="phone">
+                    <label for="contact-phone">Phone</label>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- ============================================================= -->
+            <!-- EXERCISE 2: Registration Form -->
+            <!-- TODO: Create a registration form -->
+            <!-- ============================================================= -->
+            <h3>Exercise 2: Create a Registration Form</h3>
+            <form class="registration-form">
+                <!-- TODO: Add fields for: -->
+                <!-- - Username (text, required, minlength="3") -->
+                <!-- - Email (email, required) -->
+                <!-- - Password (password, required, minlength="8") -->
+                <!-- - Confirm Password (password, required) -->
+                <!-- - Age (number, min="13", max="120") -->
+                <!-- - Country (select dropdown with 5 options) -->
+                <!-- - Agree to terms (checkbox, required) -->
+                <!-- - Submit button -->
+            </form>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- EXERCISE 3: Data Table -->
+        <!-- TODO: Create a styled table -->
+        <!-- ============================================================= -->
+        <section>
+            <h2>Exercise 3: Create a Data Table</h2>
+            <!-- TODO: Create a table with: -->
+            <!-- - Headers: Name, Email, Role, Status -->
+            <!-- - At least 4 rows of data -->
+            <!-- - Use <thead> and <tbody> -->
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- EXERCISE 4: Flexbox Layout -->
+        <!-- ============================================================= -->
+        <section>
+            <h2>Exercise 4: Flexbox Cards</h2>
+            <p>Create 3 cards that display side-by-side on desktop and stack on mobile.</p>
+            <div class="card-container">
+                <!-- TODO: Create 3 cards with: -->
+                <!-- - An icon or emoji -->
+                <!-- - A title -->
+                <!-- - A description paragraph -->
+                <!-- - A "Learn More" button -->
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- EXERCISE 5: CSS Grid Gallery -->
+        <!-- ============================================================= -->
+        <section>
+            <h2>Exercise 5: Image Gallery</h2>
+            <p>Create a responsive image gallery using CSS Grid.</p>
+            <div class="gallery">
+                <!-- TODO: Add 6 image placeholders -->
+                <!-- Use: https://via.placeholder.com/300 -->
+                <!-- Add alt text to each image -->
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; 2024 CS50 Practice. All rights reserved.</p>
+        <p>Contact: <a href="mailto:test@example.com">test@example.com</a></p>
+    </footer>
+</body>
+</html>

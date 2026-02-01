@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}Register - Flask Practice{% endblock %}
+
+{% block content %}
+<h1>Register</h1>
+
+<form method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required minlength="3">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required minlength="6">
+
+    <label for="confirm">Confirm Password:</label>
+    <input type="password" id="confirm" name="confirm" required>
+
+    <button type="submit">Register</button>
+</form>
+
+<p style="margin-top: 20px;">
+    Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+</p>
+
+<h2 style="margin-top: 40px;">Implementation Hints</h2>
+<pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+# In app.py:
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        confirm = request.form.get('confirm')
+
+        if username in users:
+            flash('Username already taken!', 'error')
+        elif password != confirm:
+            flash('Passwords do not match!', 'error')
+        else:
+            users[username] = password  # In real apps, hash the password!
+            flash('Registration successful!', 'success')
+            return redirect(url_for('login'))
+
+    return render_template('register.html')
+</pre>
+{% endblock %}

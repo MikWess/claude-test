@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Basics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .exercise { background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; border: none; border-radius: 5px; background: #3498db; color: white; }
+        button:hover { background: #2980b9; }
+        input, select { padding: 10px; margin: 5px; border: 1px solid #ddd; border-radius: 5px; }
+        .output { background: #e8f4f8; padding: 15px; margin: 10px 0; border-radius: 5px; min-height: 30px; }
+        .hidden { display: none; }
+        .highlight { background-color: yellow; }
+        .box { width: 100px; height: 100px; background: #3498db; margin: 10px; display: inline-block; transition: all 0.3s; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript DOM Basics</h1>
+
+    <!-- ============================================================= -->
+    <!-- LESSON: Selecting Elements -->
+    <!-- ============================================================= -->
+    <section>
+        <h2>Lesson: Selecting Elements</h2>
+        <p id="demo-paragraph">This is a paragraph with an ID.</p>
+        <p class="demo-class">First paragraph with class.</p>
+        <p class="demo-class">Second paragraph with class.</p>
+        <div data-info="example">Element with data attribute</div>
+
+        <div class="output" id="selection-output"></div>
+
+        <script>
+            // document.getElementById() - selects ONE element by ID
+            const para = document.getElementById('demo-paragraph');
+            console.log('By ID:', para.textContent);
+
+            // document.querySelector() - selects FIRST matching element
+            const firstClass = document.querySelector('.demo-class');
+            console.log('First by class:', firstClass.textContent);
+
+            // document.querySelectorAll() - selects ALL matching elements
+            const allClass = document.querySelectorAll('.demo-class');
+            console.log('All by class:', allClass.length, 'elements');
+
+            // Selecting by data attribute
+            const dataEl = document.querySelector('[data-info="example"]');
+            console.log('By data attr:', dataEl.textContent);
+
+            document.getElementById('selection-output').textContent =
+                'Check the console (F12) to see selection results!';
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 1: Click Counter -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 1: Click Counter</h2>
+        <p>Count: <span id="count">0</span></p>
+        <button id="increment-btn">+1</button>
+        <button id="decrement-btn">-1</button>
+        <button id="reset-btn">Reset</button>
+
+        <script>
+            // TODO: Make the counter work!
+            // 1. Get references to the span and buttons
+            // 2. Create a count variable
+            // 3. Add click event listeners to each button
+            // 4. Update the span's textContent
+
+            // let count = 0;
+            // const countSpan = document.getElementById('count');
+            // const incrementBtn = document.getElementById('increment-btn');
+            // ... continue
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 2: Text Manipulator -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 2: Text Manipulator</h2>
+        <input type="text" id="text-input" placeholder="Enter some text">
+        <button id="uppercase-btn">UPPERCASE</button>
+        <button id="lowercase-btn">lowercase</button>
+        <button id="reverse-btn">esreveR</button>
+        <button id="clear-btn">Clear</button>
+        <div class="output" id="text-output">Result will appear here</div>
+
+        <script>
+            // TODO: Make each button transform the input text
+            // Display the result in the output div
+
+            // Hints:
+            // - Get input value: inputElement.value
+            // - Uppercase: str.toUpperCase()
+            // - Lowercase: str.toLowerCase()
+            // - Reverse: str.split('').reverse().join('')
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 3: Show/Hide Toggle -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 3: Show/Hide Toggle</h2>
+        <button id="toggle-btn">Toggle Content</button>
+        <div id="toggle-content" class="output">
+            <p>This content can be shown or hidden!</p>
+            <p>Click the button to toggle visibility.</p>
+        </div>
+
+        <script>
+            // TODO: Toggle the 'hidden' class on the content div
+            // Hint: element.classList.toggle('hidden')
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 4: Dynamic List -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 4: Dynamic Todo List</h2>
+        <input type="text" id="todo-input" placeholder="Enter a task">
+        <button id="add-todo-btn">Add Task</button>
+        <ul id="todo-list"></ul>
+
+        <script>
+            // TODO: Create a dynamic todo list
+            // 1. When "Add Task" is clicked, create a new <li>
+            // 2. Add the input text to the <li>
+            // 3. Add a "Delete" button to each <li>
+            // 4. Clear the input after adding
+
+            // Hints:
+            // - document.createElement('li')
+            // - element.appendChild(newElement)
+            // - element.remove() to delete
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 5: Color Changer -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 5: Color Changer</h2>
+        <div class="box" id="color-box"></div>
+        <br>
+        <button class="color-btn" data-color="#e74c3c">Red</button>
+        <button class="color-btn" data-color="#2ecc71">Green</button>
+        <button class="color-btn" data-color="#3498db">Blue</button>
+        <button class="color-btn" data-color="#9b59b6">Purple</button>
+        <input type="color" id="custom-color" value="#f1c40f">
+        <button id="apply-custom">Apply Custom</button>
+
+        <script>
+            // TODO: Change the box color when buttons are clicked
+            // 1. Use querySelectorAll to get all color buttons
+            // 2. Loop through them with forEach
+            // 3. Add click listener to each
+            // 4. Use the data-color attribute to set background color
+            // 5. Make the custom color picker work too
+
+            // Hint: element.dataset.color gets the data-color value
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 6: Form Validation -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 6: Form Validation</h2>
+        <form id="signup-form">
+            <div>
+                <input type="text" id="username" placeholder="Username (min 3 chars)">
+                <span id="username-error" class="error" style="color: red;"></span>
+            </div>
+            <div>
+                <input type="email" id="email" placeholder="Email">
+                <span id="email-error" class="error" style="color: red;"></span>
+            </div>
+            <div>
+                <input type="password" id="password" placeholder="Password (min 6 chars)">
+                <span id="password-error" class="error" style="color: red;"></span>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="output" id="form-result"></div>
+
+        <script>
+            // TODO: Validate the form before submission
+            // 1. Add 'submit' event listener to the form
+            // 2. Prevent default form submission: event.preventDefault()
+            // 3. Validate:
+            //    - Username: at least 3 characters
+            //    - Email: contains '@' and '.'
+            //    - Password: at least 6 characters
+            // 4. Show error messages next to invalid fields
+            // 5. If all valid, show success message
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 7: Keyboard Events -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 7: Keyboard Events</h2>
+        <p>Press keys to see what's happening:</p>
+        <input type="text" id="key-input" placeholder="Type here...">
+        <div class="output" id="key-output">
+            Key: <span id="key-pressed">-</span><br>
+            Code: <span id="key-code">-</span><br>
+            Character Count: <span id="char-count">0</span>
+        </div>
+
+        <script>
+            // TODO: Handle keyboard events
+            // 1. Add 'keydown' or 'keyup' event listener
+            // 2. Display event.key and event.code
+            // 3. Count characters as user types
+
+            // Bonus: Clear input when Escape is pressed
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 8: Timer -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 8: Stopwatch</h2>
+        <p style="font-size: 2em;" id="timer-display">00:00:00</p>
+        <button id="start-btn">Start</button>
+        <button id="stop-btn">Stop</button>
+        <button id="reset-timer-btn">Reset</button>
+
+        <script>
+            // TODO: Create a stopwatch
+            // 1. Use setInterval() to update every second
+            // 2. Start button begins the timer
+            // 3. Stop button pauses it
+            // 4. Reset button sets back to 00:00:00
+
+            // Hints:
+            // - Store interval ID: let intervalId = setInterval(fn, 1000)
+            // - Stop interval: clearInterval(intervalId)
+            // - Format time: hours.toString().padStart(2, '0')
+        </script>
+    </section>
+
+</body>
+</html>

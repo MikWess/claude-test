@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Contact - Flask Practice{% endblock %}
+
+{% block content %}
+<h1>Contact Us</h1>
+<p>Fill out the form below to send us a message.</p>
+
+<form method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+</form>
+
+<h2>How This Works</h2>
+<ol style="margin-left: 20px; margin-top: 20px;">
+    <li>Form submits via POST to the same route</li>
+    <li>Flask checks <code>request.method</code></li>
+    <li>If POST, process form data from <code>request.form</code></li>
+    <li>Flash a message and redirect</li>
+    <li>If GET, render the form</li>
+</ol>
+{% endblock %}

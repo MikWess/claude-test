@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ title }} - Flask Practice{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<p>This Flask practice app was created in {{ year }}.</p>
+
+<h2>Template Variables</h2>
+<p>This page demonstrates passing variables to templates:</p>
+<ul style="list-style-type: disc; margin-left: 20px;">
+    <li><code>title</code> = "{{ title }}"</li>
+    <li><code>year</code> = {{ year }}</li>
+</ul>
+
+<h2>Jinja2 Features</h2>
+<p>Templates support:</p>
+<ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Variable interpolation: <code>{{ "{{ variable }}" }}</code></li>
+    <li>Control structures: <code>{{ "{% if/for/block %}" }}</code></li>
+    <li>Template inheritance: <code>{{ "{% extends 'layout.html' %}" }}</code></li>
+    <li>Filters: <code>{{ "{{ name|upper }}" }}</code></li>
+</ul>
+
+<h2>Exercise: Add More Info</h2>
+<p>TODO: Pass more variables from the route (like author name, description) and display them here.</p>
+{% endblock %}

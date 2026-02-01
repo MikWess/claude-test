@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h2 { color: #2c3e50; border-bottom: 2px solid #e74c3c; padding-bottom: 10px; }
+        .exercise { background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; border: none; border-radius: 5px; background: #e74c3c; color: white; }
+        button:hover { background: #c0392b; }
+        .output { background: #fdeaea; padding: 15px; margin: 10px 0; border-radius: 5px; min-height: 30px; }
+        .drop-zone { border: 3px dashed #aaa; padding: 40px; text-align: center; margin: 10px 0; transition: all 0.3s; }
+        .drop-zone.dragover { border-color: #3498db; background: #e8f4f8; }
+        .draggable { padding: 10px 20px; background: #3498db; color: white; display: inline-block; margin: 5px; cursor: move; border-radius: 5px; }
+        .quiz-option { padding: 15px; margin: 10px 0; background: white; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        .quiz-option:hover { border-color: #3498db; }
+        .quiz-option.correct { background: #d4edda; border-color: #28a745; }
+        .quiz-option.incorrect { background: #f8d7da; border-color: #dc3545; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; max-width: 500px; }
+        .modal.active { display: flex; }
+        .slider { width: 100%; }
+        .tabs { display: flex; gap: 5px; }
+        .tab-btn { flex: 1; padding: 15px; background: #ddd; border: none; cursor: pointer; }
+        .tab-btn.active { background: #3498db; color: white; }
+        .tab-content { display: none; padding: 20px; background: #f8f9fa; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Events Practice</h1>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 1: Trivia Quiz -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 1: Trivia Quiz</h2>
+        <p><strong>Question:</strong> What does HTML stand for?</p>
+        <div id="quiz-options">
+            <div class="quiz-option" data-correct="false">Hyper Text Markup Language</div>
+            <div class="quiz-option" data-correct="true">HyperText Markup Language</div>
+            <div class="quiz-option" data-correct="false">Home Tool Markup Language</div>
+            <div class="quiz-option" data-correct="false">Hyperlinks and Text Markup Language</div>
+        </div>
+        <div class="output" id="quiz-result"></div>
+
+        <script>
+            // TODO: Make the quiz work
+            // 1. Add click listener to each option
+            // 2. Check data-correct attribute
+            // 3. Add 'correct' or 'incorrect' class
+            // 4. Display result message
+            // 5. Disable further clicking after answer
+
+            // Hint:
+            // option.dataset.correct === 'true'
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 2: Modal Popup -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 2: Modal Popup</h2>
+        <button id="open-modal-btn">Open Modal</button>
+
+        <div class="modal" id="my-modal">
+            <div class="modal-content">
+                <h3>Welcome!</h3>
+                <p>This is a modal popup. Click outside or press Escape to close.</p>
+                <button id="close-modal-btn">Close</button>
+            </div>
+        </div>
+
+        <script>
+            // TODO: Make the modal work
+            // 1. Open modal when button clicked (add 'active' class)
+            // 2. Close when close button clicked
+            // 3. Close when clicking outside the modal-content
+            // 4. Close when pressing Escape key
+
+            // Hint for closing on outside click:
+            // if (event.target === modal) { close }
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 3: Tabs -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 3: Tab Navigation</h2>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="tab1">Tab 1</button>
+            <button class="tab-btn" data-tab="tab2">Tab 2</button>
+            <button class="tab-btn" data-tab="tab3">Tab 3</button>
+        </div>
+        <div class="tab-content active" id="tab1">
+            <h4>Tab 1 Content</h4>
+            <p>This is the content for the first tab.</p>
+        </div>
+        <div class="tab-content" id="tab2">
+            <h4>Tab 2 Content</h4>
+            <p>Here's some different content for tab 2.</p>
+        </div>
+        <div class="tab-content" id="tab3">
+            <h4>Tab 3 Content</h4>
+            <p>And finally, tab 3 has its own content!</p>
+        </div>
+
+        <script>
+            // TODO: Make tabs switch content
+            // 1. Add click listener to each tab button
+            // 2. Remove 'active' class from all tabs and content
+            // 3. Add 'active' class to clicked tab
+            // 4. Show corresponding content (use data-tab to match id)
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 4: Range Slider -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 4: Interactive Slider</h2>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <input type="range" class="slider" id="font-slider" min="12" max="48" value="16">
+            <span id="slider-value">16px</span>
+        </div>
+        <p id="sample-text" style="transition: font-size 0.2s;">
+            This text will change size as you move the slider!
+        </p>
+
+        <script>
+            // TODO: Make the slider control font size
+            // 1. Add 'input' event listener to slider
+            // 2. Get the slider value
+            // 3. Update the display span
+            // 4. Change the font-size of the sample text
+
+            // Hint: element.style.fontSize = value + 'px'
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 5: Mouse Tracker -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 5: Mouse Position Tracker</h2>
+        <div id="mouse-area" style="height: 200px; background: linear-gradient(to right, #ff6b6b, #4ecdc4); border-radius: 10px; position: relative; overflow: hidden;">
+            <div id="mouse-follower" style="width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; pointer-events: none; transition: transform 0.1s;"></div>
+        </div>
+        <p>Mouse X: <span id="mouse-x">0</span>, Y: <span id="mouse-y">0</span></p>
+
+        <script>
+            // TODO: Track mouse movement
+            // 1. Add 'mousemove' event listener to mouse-area
+            // 2. Get mouse position relative to the area
+            // 3. Display coordinates
+            // 4. Move the follower div to follow the mouse
+
+            // Hints:
+            // - event.offsetX, event.offsetY for position relative to element
+            // - element.style.left = x + 'px'
+            // - element.style.top = y + 'px'
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 6: Drag and Drop -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 6: Drag and Drop</h2>
+        <div id="drag-container">
+            <div class="draggable" draggable="true" id="item1">Item 1</div>
+            <div class="draggable" draggable="true" id="item2">Item 2</div>
+            <div class="draggable" draggable="true" id="item3">Item 3</div>
+        </div>
+        <div class="drop-zone" id="drop-zone">
+            Drop items here!
+        </div>
+        <button id="reset-drag">Reset</button>
+
+        <script>
+            // TODO: Implement drag and drop
+            // Events needed:
+            // - dragstart on draggable: store the dragged element id
+            // - dragover on drop zone: event.preventDefault() to allow drop
+            // - dragenter on drop zone: add visual feedback
+            // - dragleave on drop zone: remove visual feedback
+            // - drop on drop zone: move the element
+
+            // Hints:
+            // - event.dataTransfer.setData('text', id)
+            // - event.dataTransfer.getData('text')
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 7: Auto-Save Form -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 7: Auto-Save Notes</h2>
+        <textarea id="notes" rows="6" style="width: 100%; padding: 10px;" placeholder="Type your notes here... They'll be auto-saved!"></textarea>
+        <p><small>Last saved: <span id="save-status">Never</span></small></p>
+
+        <script>
+            // TODO: Auto-save to localStorage
+            // 1. Load saved content on page load
+            // 2. Save to localStorage when user stops typing (use debounce!)
+            // 3. Update "Last saved" timestamp
+
+            // Debounce hint:
+            // let timeout;
+            // function debounce(func, delay) {
+            //     clearTimeout(timeout);
+            //     timeout = setTimeout(func, delay);
+            // }
+
+            // localStorage:
+            // localStorage.setItem('key', 'value')
+            // localStorage.getItem('key')
+        </script>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXERCISE 8: Scroll Events -->
+    <!-- ============================================================= -->
+    <section class="exercise">
+        <h2>Exercise 8: Scroll Progress</h2>
+        <div id="progress-bar" style="position: fixed; top: 0; left: 0; height: 5px; background: #e74c3c; width: 0%; z-index: 1000; transition: width 0.1s;"></div>
+
+        <script>
+            // TODO: Show scroll progress at top of page
+            // 1. Add 'scroll' event listener to window
+            // 2. Calculate scroll percentage
+            // 3. Update progress bar width
+
+            // Calculation:
+            // scrollPercent = (scrollY / (documentHeight - windowHeight)) * 100
+
+            // Hints:
+            // - window.scrollY - current scroll position
+            // - document.documentElement.scrollHeight - total document height
+            // - window.innerHeight - viewport height
+        </script>
+    </section>
+
+    <!-- Add some content to enable scrolling -->
+    <div style="height: 50vh;"></div>
+
+</body>
+</html>

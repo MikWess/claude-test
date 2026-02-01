@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard - Flask Practice{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ username }}!</h1>
+<p>You are logged in to your dashboard.</p>
+
+<h2>Session Info</h2>
+<p>Your session contains:</p>
+<ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Username: <code>{{ username }}</code></li>
+</ul>
+
+<h2>Protected Routes</h2>
+<p>This page is protected - only logged-in users can see it.</p>
+<p>The route checks if 'user' is in the session:</p>
+<pre style="background: #f8f9fa; padding: 15px; border-radius: 5px;">
+@app.route('/dashboard')
+def dashboard():
+    if 'user' not in session:
+        flash('Please log in first.', 'warning')
+        return redirect(url_for('login'))
+    return render_template('dashboard.html', username=session['user'])
+</pre>
+
+<p style="margin-top: 20px;">
+    <a href="{{ url_for('logout') }}">
+        <button class="btn-danger">Logout</button>
+    </a>
+</p>
+{% endblock %}

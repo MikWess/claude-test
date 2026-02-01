@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}Todo List - Flask Practice{% endblock %}
+
+{% block content %}
+<h1>Todo List</h1>
+
+<!-- Add Todo Form -->
+<form method="POST" action="{{ url_for('todo_list') }}" style="margin-bottom: 30px;">
+    <div style="display: flex; gap: 10px;">
+        <input type="text" name="task" placeholder="Enter a new task..." required style="flex: 1;">
+        <button type="submit">Add Task</button>
+    </div>
+</form>
+
+<!-- Todo List -->
+{% if todos %}
+    <ul>
+    {% for todo in todos %}
+        <li>
+            <span>{{ todo }}</span>
+            <form method="POST" action="#" style="display: inline;">
+                <button type="submit" class="btn-danger" style="padding: 5px 10px;">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p style="color: #666; font-style: italic;">No todos yet. Add one above!</p>
+{% endif %}
+
+<h2 style="margin-top: 40px;">Exercise Tasks</h2>
+<ol style="margin-left: 20px;">
+    <li>Implement the <code>/todos/add</code> POST route</li>
+    <li>Implement the <code>/todos/delete/&lt;index&gt;</code> route</li>
+    <li>Update the delete button's form action</li>
+    <li>Add a "Mark Complete" feature</li>
+    <li>Style completed todos differently</li>
+</ol>
+
+<h2 style="margin-top: 20px;">Hints</h2>
+<pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+# In app.py:
+@app.route('/todos/add', methods=['POST'])
+def add_todo():
+    task = request.form.get('task')
+    if task:
+        todos.append(task)
+    return redirect(url_for('todo_list'))
+</pre>
+{% endblock %}
